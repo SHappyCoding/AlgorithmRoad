@@ -1,4 +1,11 @@
 public class QuickSort {
+    /**
+     * 快速排序：
+     * 先确定一个主元(也就是需要排序的元素)
+     * 将序列分成<=x的区域和大于x的区域，主元最后在中间
+     * 稳定性：不稳定
+     * 时间复杂度：O(nlgn)
+     */
     public void quicksort(int[] A,int p,int r) {
         int q=0;
         if(p<r){
