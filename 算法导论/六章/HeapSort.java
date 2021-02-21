@@ -50,6 +50,44 @@ public class HeapSort {
             MAX_HEAPIFY(A,0);
         }
     }
+    
+    //返回堆最大值
+    public int Heap_Maximum(int[] A){return A[0];}
+
+    //去掉堆中最大值并返回
+    public int Heap_Extract_max(int[] A){
+        if(Heap_size<1) {
+            System.out.print("堆中没有元素,返会0");
+            return 0;
+        }
+        int max=A[0];
+        A[0]=A[Heap_size-1];
+        Heap_size--;
+        MAX_HEAPIFY(A,0);
+        return max;
+    }
+
+    //将A[i]赋值为key
+    public void Heap_increase_key(int[] A,int i,int key){
+        if(key<A[i]) {
+            System.out.print("key值小于"+A[i]+",不能更改值");
+            return;
+        }
+        if(i==0)return;
+        A[i]=key;
+        while(i>0 && A[i]>A[Parent(i)]) {
+            Swap(A,i,Parent(i));
+            i=Parent(i);
+        }
+    }
+
+    //插入一个元素key
+    public void Max_Heap_insert(int[] A,int key){
+        Heap_size++;
+        A[Heap_size-1]=Integer.MIN_VALUE;
+        Heap_increase_key(A,Heap_size-1,key);
+    }
+
 
     public static void main(String[] args) {
         HeapSort hs=new HeapSort();
