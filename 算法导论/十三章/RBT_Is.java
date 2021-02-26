@@ -42,6 +42,36 @@ public class RBT_Is {
         }
         return check(root.left, num, count) && check(root.right, num, count);
     }
+    
+    //判断是否是一棵二叉搜索树，红黑树首先是一棵二叉搜索树
+    public static boolean isBST(RBT_Node node)
+    {
+        if (node == null || node.left == null && node.right == null)
+            return true;
+        Integer pre = Integer.MIN_VALUE;
+        Stack<RBT_Node> stack = new Stack<RBT_Node>();
+        RBT_Node temp = null;
+        while (node != null || !stack.isEmpty())
+        {
+            while (node != null)
+            {
+                stack.push(node);
+                node = node.left;
+            }
+            if (!stack.isEmpty())
+            {
+                temp = stack.pop();
+                if (temp.key != null)
+                {
+                    if (pre >= temp.key)
+                        return false;
+                    node = temp.right;
+                    pre = temp.key;
+                }
+            }
+        }
+        return true;
+    }
 
     public static void main(String[] args) {
         RedBlackTree RBT = new RedBlackTree();
