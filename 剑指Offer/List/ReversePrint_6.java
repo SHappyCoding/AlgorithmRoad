@@ -21,7 +21,14 @@ public class ReversePrint_6 {
         //从最后一个链表结点开始添加元素
         ls.add(head);
     }
-
+//    递归怎么写：
+//
+//      1）递归出口
+//
+//      2）递归函数
+//
+//      3）递归到了最后碰到最后一个元素之后应该做什么（此时就想象你已经到了最后一个结点了，然后该怎么写）
+    
     //按输入数组构造一个链表
     public ListNode Create_Listnode(int[] a){
         if(a.length==0)return null;
