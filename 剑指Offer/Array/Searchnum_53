@@ -1,0 +1,51 @@
+public class Searchnum_53 {
+
+    //遍历到指定数就停止，然后数有几个就返回
+    public int search(int[] nums, int target) {
+        int len=nums.length;
+        if(len == 0) return 0;
+        int count=0;
+        for(int i=0;i<len;i++){
+            if(nums[i]==target){
+                while(nums[i++]==target){
+                    count++;
+                    if(i==len)break;
+                }
+                break;
+            }
+        }
+        return count;
+    }
+
+    //target数量=(target)右边界-(target-1)右边界
+    public int search2(int[] nums, int target) {
+        return helper(nums, target) - helper(nums, target - 1);
+    }
+    //二分查找右边界
+    int helper(int[] nums, int tar) {
+        int i = 0, j = nums.length - 1;
+        //右边界就是大于tar的最小值的下标
+        while(i <= j) {
+            int m = (i + j) / 2;
+            if(nums[m] <= tar) i = m + 1;
+            else j = m - 1;
+        }
+        //右边界就是等于tar的最大下标
+//        while(i<j){
+//            int mid=i+j+1>>1;  //下取整
+//            if(nums[mid] <= tar) i=mid;  //如果mid满足性质x
+//            else j=mid-1;
+//        }
+        //System.out.println(i);
+        return i;
+    }
+
+    public static void main(String[] args)
+    {
+        Searchnum_53 sr=new Searchnum_53();
+        int[] a={5,7,7,8,8,10};
+        System.out.println(sr.search(a,8));
+        System.out.print(sr.search2(a,8));
+
+    }
+}
