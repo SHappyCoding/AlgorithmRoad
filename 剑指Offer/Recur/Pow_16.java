@@ -7,7 +7,7 @@ public class Pow_16 {
         return x*myPow(x,n-1);
     }
 
-    //二分将x^n=x^2*x^(n/2)，一直将n二分，最后时间复杂度就是O(lgn)
+    //二分将x^n=x^(2(n/2))，一直将n二分，最后时间复杂度就是O(lgn)
     public double myPow2(double x, int n) {
         if(x == 0) return 0;
         //int32 变量n∈[−2147483648, 2147483647]因此当n=−2147483648时执行n=−n 会因越界而赋值出错。解决方法是先将
