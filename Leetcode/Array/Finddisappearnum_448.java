@@ -29,7 +29,8 @@ public class Finddisappearnum_448 {
     public List<Integer> findDisappearedNumbers2(int[] nums) {
         int n = nums.length;
         for (int num : nums) {
-            int x = (num - 1) % n;  //将num变成下标
+            int x = (num - 1) % n;  //将num变成下标，取余就是为了使本来nums[x]的地方也能使nums[nums[x]]的地方改变。
+            //例如x=2,原来num[2]=4,进过一次for，nums[2]=4+n。遍历到4+n的时候也可以将num[(4+n)%n=4]的位置的数加n
             nums[x] += n;   //对应下标的位置的数增加n
         }
         List<Integer> ret = new ArrayList<Integer>();
